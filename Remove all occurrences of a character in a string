@@ -1,0 +1,23 @@
+class Solution {
+    // Function to remove all occurrences of the character from the string
+    public void removeCharacter(StringBuilder s, char c) {
+        removeHelper(s, c, 0);
+    }
+    
+    private void removeHelper(StringBuilder s, char c, int index) {
+        // Base case
+        if (index >= s.length()) {
+            return;
+        }
+        
+        // If character matches, delete it
+        if (s.charAt(index) == c) {
+            s.deleteCharAt(index);
+            // Do NOT increment index because characters shift left
+            removeHelper(s, c, index);
+        } else {
+            // Move to next index
+            removeHelper(s, c, index + 1);
+        }
+    }
+}
